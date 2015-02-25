@@ -42,11 +42,11 @@ io.sockets.on('connection', function(socket) {
     socket.on('new_state', function(data) {
     	console.log(data['state']);
     	console.log("new_state received");
-    	collection.insert({state:data['state']}, function(err, docs) {
+    	collection.insert({state:data['state'], rects:data['rects']}, function(err, docs) {
     		if(err) throw err;
     		console.log(docs);
-			socket.emit('updated_state', { new_state: data['state'] });
-			console.log('updated_state emitted')
+			socket.broadcast.emit('updated_state', { new_state: data['state'], new_rects: data['rects'] });
+			console.log('updated_state emitted');
     	});
 
 	});
