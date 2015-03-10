@@ -45,8 +45,9 @@ io.sockets.on('connection', function(socket) {
     	collection.insert({state:data['state'], rects:data['rects'], mockup:data['mockup_key'], collabtype:data['collab_type']}, function(err, docs) {
     		if(err) throw err;
     		console.log(docs);
-			socket.broadcast.emit('updated_state', { new_state: data['state'], new_rects: data['rects'] });
-			console.log('updated_state emitted');
+            console.log('currently not broadcasting to everyone');
+			//socket.broadcast.emit('updated_state', { new_state: data['state'], new_rects: data['rects'] });
+			//console.log('updated_state emitted');
     	});
 	});
 });
