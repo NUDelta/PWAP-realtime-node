@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket) {
     socket.emit('welcome', { message: 'Welcome!' });
     console.log("Emitting welcome event");
 
-    socket.on('new_state', function(data) {
+    socket.on('newState', function(data) {
     	console.log(data['state']);
     	console.log("new_state received");
     	collection.insert({state:data['state'], rects:data['rects'], mockup:data['mockup_key'], collabtype:data['collab_type']}, function(err, docs) {
