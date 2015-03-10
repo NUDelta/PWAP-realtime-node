@@ -42,7 +42,7 @@ io.sockets.on('connection', function(socket) {
     socket.on('newState', function(data) {
     	console.log(data['state']);
     	console.log("new_state received");
-    	collection.insert({state:data['state'], rects:data['rects'], mockup:data['mockup_key'], collabtype:data['collab_type']}, function(err, docs) {
+    	collection.insert({state:data['state'], rects:data['rects'], mockup:data['mockup_key'], collabtype:data['collab_type'], timestamp:new Date().toJSON() }, function(err, docs) {
     		if(err) throw err;
     		console.log(docs);
             console.log('currently not broadcasting to everyone');
